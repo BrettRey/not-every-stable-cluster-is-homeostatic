@@ -1,0 +1,41 @@
+# Project Brief
+
+## Core Question
+
+What changes in Boydian HPC theory if `homeostasis` is interpreted in Weinberger's stricter causal-control sense rather than as a loose synonym for stability or maintenance?
+
+## Proposed Contribution
+
+The paper should separate three notions that often get run together:
+
+1. **Stable property clusters:** properties co-occur reliably enough to support limited induction.
+2. **Network-ordered kinds:** projectible categories whose properties have internal order, as in Khalidi's causal-network view.
+3. **Homeostatic-control kinds:** stricter cases where feedback-sensitive mechanisms correct perturbation and preserve a higher-scale relation through lower-scale variation.
+
+This gives a cleaner Boyd--Khalidi division of labour. Boyd supplies the anti-essentialist and projectibility frame. Khalidi supplies network order. Weinberger supplies the stricter account of homeostasis as causal control.
+
+## Working Structure
+
+1. Problem: HPC theory overuses `homeostasis`.
+2. Boyd: projectibility without essences.
+3. Khalidi: order, not unordered clusters.
+4. Weinberger: control, not mere stability.
+5. Taxonomy: stable clusters, network-ordered kinds, homeostatic-control kinds.
+6. Worked case 1: biological or engineering control.
+7. Worked case 2: linguistic or social kind where stability is real but strict homeostasis overstates the evidence.
+8. Payoff: better diagnostics for HPC claims.
+
+## Candidate Worked Cases
+
+- Biological/control: Watt governor or physiological regulation from Weinberger.
+- Linguistic: interjections as stable/projectible but weakly homeostatic.
+- Linguistic: grammaticality as potentially homeostatic only if correction, repair, acquisition, and transmission form a coordinated control architecture.
+- Social ontology: fields/practices as projectibility regimes without being strict HPCs.
+- AI evaluation: benchmark reliability versus controlled robustness.
+
+## Guardrails
+
+- Do not write a literature survey on homeostasis.
+- Do not imply Khalidi simply replaces Boyd.
+- Do not let mechanism talk replace projectibility.
+- Keep the paper short unless the worked cases earn expansion.
