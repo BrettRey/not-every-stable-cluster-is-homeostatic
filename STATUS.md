@@ -6,7 +6,7 @@ Not every stable cluster is homeostatic: Stability, network order, and control i
 
 ## Stage
 
-Seed project scaffolded on 2026-05-28. Public GitHub repo created as infrastructure for a short philosophy-of-science article. Current draft is diagnostic-first and buildable.
+Seed project scaffolded on 2026-05-28. Public GitHub repo created as infrastructure for a short philosophy-of-science article. Current draft is diagnostic-first and buildable. Primary target locked: Journal for General Philosophy of Science.
 
 ## Working Thesis
 
@@ -18,10 +18,12 @@ Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats 
 
 ## Immediate Next Actions
 
-- Decide between short-note submission and full-article expansion.
+- Develop the paper as a compact JGPS research article, targeting 5,500--7,000 words.
 - Tighten the Boyd/Khalidi exegetical contrast without turning the paper into a survey.
+- Add a moderate amount of scaffolding for JGPS readers: Weinberger's control account, glycemic regulation, interjections, and why cross-domain cases are legitimate.
 - If preparing blind review, create an anonymized manuscript without author block, ORCID, contact footnote, acknowledgements, or LLM declaration in the main file.
-- Keep the paper short. Target 4,000--6,000 words unless the worked cases force expansion.
+- Create a separate title-page/declarations file before submission.
+- Run the saved reviewer board in `advisory-board.md`: Khalidi, Onishi, Weinberger, and Ereshefsky.
 
 ## Source Anchors
 
@@ -31,6 +33,7 @@ Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats 
 - `slater2015` and `onishi2022`: stability-first and mechanism-sceptical pressure on HPC theory.
 - `dingemanse2024`, `ameka1992`, and `norrick2009`: interjections as stable pragmatic projectibility.
 - `fitzgeraldBean2018` and `bichMossioSoto2020`: glycemic regulation as a harder biological control case.
+- `corbett2006`, `bockMiller1991`, and `levelt1983`: agreement monitoring/repair as the candidate positive linguistic case.
 
 ## Session Notes
 
@@ -44,3 +47,8 @@ Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats 
 - Verified the Weinberger Springer DOI and revised the paper around diagnostics rather than a ladder.
 - Added the Watt governor as the calibration case, glycemic regulation as a harder biological extension, and interjections as the negative linguistic case.
 - Clarified that the governor is a calibration case rather than a kind, glycemic regulation is the biological candidate domain, and grammaticality is the plausible positive linguistic case for later expansion.
+- Locked Journal for General Philosophy of Science as the primary target and added `notes/jgps-submission-plan.md`.
+- Added JGPS-ready keywords, confirmed the abstract is in the required range, and added `notes/jgps-audience-tone.md`.
+- Saved the JGPS reviewer board as Khalidi, Onishi, Weinberger, and Ereshefsky in `advisory-board.md`.
+- Saved GPT-5.5 Pro feedback and the full four-reviewer board outputs in `notes/review-board-2026-05-28.md`.
+- Replaced gender concord with agreement monitoring/repair as the candidate positive linguistic case.

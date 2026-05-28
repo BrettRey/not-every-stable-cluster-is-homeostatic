@@ -19,3 +19,25 @@
 2026-05-28 -- Treat network order broadly across domains. Reason: biological and mechanical cases may involve causal order, while linguistic and social cases may involve functional, conventional, sequential, or evidential dependencies.
 
 2026-05-28 -- Add grammaticality as the likely positive linguistic case for future expansion. Reason: interjections are a useful negative case; grammaticality better tests whether correction, repair, acquisition, and transmission can form a coordinated control architecture.
+
+2026-05-28 -- Target Journal for General Philosophy of Science as the primary venue. Reason: JGPS is the best match for the paper's cross-domain general philosophy-of-science shape: natural-kind theory, biology/control, linguistic and social categories, and a diagnostic about projectibility.
+
+2026-05-28 -- Develop the JGPS version as a compact research article rather than a discussion. Reason: JGPS discussions are brief comments on recently published articles, while this paper uses several debates and cases to build an independent diagnostic. Target 5,500--7,000 words.
+
+2026-05-28 -- Expand the seed into a full article against a 14-section outline (notes/article-outline.md). Reason: the seed is the core argument, not the finished article; JGPS wants developed setup and worked cases.
+
+2026-05-28 -- Add a "From stabilisers to controllers" bridge section. Reason: the HPC book defines stabiliser as the cluster-maintaining functional role, and its diagnostics appendix already separates homeostasis-proper (return-to-basin) from broader maintenance. Making "not every stabiliser is a controller" explicit is the paper's hinge. Present stabiliser as a general concept with a blind-review-safe citation, not as "my book."
+
+2026-05-28 -- Use gender agreement/concord as the worked positive linguistic case, ordered after interjections (negative then positive); demote grammaticality to a one-paragraph gesture. Reason: concord gives the cleanest control evidence in language (enforcement, repair, acquisition convergence), parallels the Watt governor, and Corbett's "controller" terminology fits. Grammaticality is contested, would swamp a short paper, and risks pre-empting other portfolio papers.
+
+2026-05-28 -- Rename "Discussion" to "What the diagnostic changes for HPC theory" and add a give-back to formal HPC work: a homeostasis basin should be defined over the higher-scale relation, not fixed lower-scale values. Reason: strongest standalone contribution; sharpens even the book's own appendix formalization (return-to-relation, not return-to-constancy).
+
+2026-05-28 -- Reframe the introduction's characterization of Boyd/Slater/Khalidi. Instead of saying the three accounts "run together" clustering, stability, order, and homeostatic maintenance, credit each with the distinction he drew (Slater separates stability from mechanism; Khalidi articulates network order) and locate the looseness in the shared "homeostatic property cluster" vocabulary and in Boyd's underspecified "homeostatic." Reason: Rapoport's Rules. The original sentence strawmanned the distinction-makers and was refutable; the corrected framing is accurate, charitable, and strengthens the contribution.
+
+2026-05-28 -- Fix the Hacking attribution in the projectibility section. The "people in concert" worry is now cited to Boyd 1991 (where Boyd quotes it) and framed as a challenge Boyd associated with Hacking, rather than asserted as Hacking's own. Reason: Rapoport's Rules plus source grounding. Onishi and Serpico note Hacking was guarded ("I have nowhere implied that [family-resemblance nouns] are not natural kinds"), the phrase's locus is Boyd 1991:128, and the literature folder has no copy of Hacking's "A Tradition of Natural Kinds" to verify against. Dropped the unverifiable hacking1991 cite.
+
+2026-05-28 -- Use Khalidi, Onishi, Weinberger, and Ereshefsky as the standing reviewer board for the JGPS draft. Reason: this panel covers causal-network kinds, the JGPS HPC-without-homeostatic-mechanisms debate, homeostasis as causal control, and broader scientific-kind pluralism.
+
+2026-05-28 -- Replace Earman 1985 with Goodman 1983 for the new-riddle/projectibility origin citation. Reason: Goodman introduced the new riddle of induction in `Fact, Fiction, and Forecast`; Earman is a secondary source on projectibility, not the right citation for the origin claim.
+
+2026-05-28 -- Replace gender concord as the positive linguistic case with agreement monitoring/repair. Reason: the reviewer board and GPT-5.5 Pro converged that gender-specific concord invited side debates and risked equivocating between Corbett's grammatical controller and feedback control. Agreement monitoring keeps Corbett's controller-target relation as the ordered dependency while locating the candidate control loop in production monitoring and self-repair, anchored by Levelt 1983 and Bock & Miller 1991.
