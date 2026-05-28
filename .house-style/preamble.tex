@@ -24,8 +24,13 @@
 \newcommand{\ipa}[1]{{\ipafont #1}}
 
 % CJK fallback font (Japanese / Chinese / Korean)
-\newfontfamily\cjkfont{Hiragino Mincho ProN}
-\newcommand{\cjk}[1]{{\cjkfont #1}}
+\IfFontExistsTF{Hiragino Mincho ProN}
+  {\newfontfamily\cjkfont{Hiragino Mincho ProN}
+   \newcommand{\cjk}[1]{{\cjkfont #1}}}
+  {\IfFontExistsTF{Noto Serif CJK JP}
+    {\newfontfamily\cjkfont{Noto Serif CJK JP}
+     \newcommand{\cjk}[1]{{\cjkfont #1}}}
+    {\newcommand{\cjk}[1]{#1}}}
 
 % Lining figures when needed (tables, years in isolation)
 \providecommand{\liningnums}[1]{{\addfontfeatures{Numbers=Lining}#1}}
@@ -47,6 +52,7 @@
 
 \usepackage[british]{babel}
 \usepackage[final]{microtype}
+\setlength{\emergencystretch}{2em}
 
 % ===========================
 % HEADINGS
@@ -83,11 +89,9 @@
 % RUNNING HEADS
 % ===========================
 \usepackage{fancyhdr}
+\setlength{\headheight}{13.6pt}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE]{\small\scshape\leftmark}
-\fancyhead[RO]{\small\scshape\@title}
-\fancyfoot[LE,RO]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 
 % For oneside documents (most papers):
