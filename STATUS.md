@@ -6,15 +6,17 @@ Not every stable cluster is homeostatic: Stability, network order, and control i
 
 ## Stage
 
-Seed project scaffolded on 2026-05-28. Public GitHub repo created as infrastructure for a short philosophy-of-science article. Current draft is diagnostic-first and buildable. Primary target locked: Journal for General Philosophy of Science.
+Seed project scaffolded on 2026-05-28. Public GitHub repo created as infrastructure for a short philosophy-of-science article. Current draft is diagnostic-ladder-first and buildable. Primary target locked: Journal for General Philosophy of Science.
 
 ## Working Thesis
 
-Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats projectibility as the target and distinguishes three ways projectibility can be secured:
+Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats projectibility as the target and orders the analysis through a five-step diagnostic ladder:
 
-1. stable co-occurrence with a specified projection;
-2. network order among central, derivative, and evidentially useful properties;
-3. corrective control that preserves a higher-scale relation through lower-scale variation.
+1. projection target;
+2. stable profile;
+3. network order;
+4. maintenance;
+5. corrective control that preserves a higher-scale relation through lower-scale variation.
 
 ## Immediate Next Actions
 
@@ -52,3 +54,9 @@ Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats 
 - Saved the JGPS reviewer board as Khalidi, Onishi, Weinberger, and Ereshefsky in `advisory-board.md`.
 - Saved GPT-5.5 Pro feedback and the full four-reviewer board outputs in `notes/review-board-2026-05-28.md`.
 - Replaced gender concord with agreement monitoring/repair as the candidate positive linguistic case.
+
+### 2026-06-01
+
+- Read the prose synthesis report at `Project-Management/analysis/reports/prose-synthesis-hpc-stability-interjections-2026-06-01.md`.
+- Reframed the article around the diagnostic ladder: projection target -> stable profile -> network order -> maintenance -> corrective control.
+- Kept the case architecture: Watt governor as calibration, glycemic regulation as strict control, interjections as the negative linguistic case, and agreement monitoring/repair as the positive linguistic candidate.

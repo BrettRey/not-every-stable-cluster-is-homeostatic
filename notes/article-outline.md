@@ -7,18 +7,22 @@ extra). Approved 2026-05-28.
 ## Thesis
 
 Boydian HPC theory needs a sharper homeostasis constraint. Projectibility is
-the target. Three different structures can secure it:
+the target. The paper now orders the analysis through a diagnostic ladder:
 
-1. **Stable cluster**: reliable co-occurrence with a specified projection.
-2. **Network order**: internal ordering among central, derivative, and
+1. **Projection target**: the inference, prediction, explanation, or intervention
+   the category is supposed to support.
+2. **Stable profile**: reliable co-occurrence with a specified projection.
+3. **Network order**: internal ordering among central, derivative, and
    evidentially useful properties (causal, or functional/conventional/
    sequential/evidential in linguistic and social cases).
-3. **Corrective control**: feedback-sensitive correction that preserves a
+4. **Maintenance**: a stabilizer whose removal would make the profile fragment,
+   drift, or dissolve.
+5. **Corrective control**: feedback-sensitive correction that preserves a
    higher-scale relation through lower-scale variation.
 
-Only the third earns the word *homeostatic*. The diagnostic protects Boyd's
+Only the fifth earns the word *homeostatic*. The diagnostic protects Boyd's
 anti-essentialism while preventing *homeostatic* from becoming a loose synonym
-for stable, mechanism-maintained, or projectible.
+for stable, maintained, network-ordered, or projectible.
 
 ## Bridge concept (the hinge that connects to the programme)
 
@@ -68,8 +72,10 @@ double-anonymous review. Do not foreground "my book."
    clamping can destroy the control relation. Four evidential marks. Bich/Bechtel:
    control mechanisms sense, transmit, alter constraints; integrated not centrally
    commanded (Diagnostic 3).
-7. **Three diagnostics** (+ table) (450). Grid not ladder; reverse inference
-   fails. Table is the hinge. Three questions before using *homeostatic*.
+7. **The diagnostic ladder** (+ table) (450). Reverse inference fails: control
+   usually brings stability, network order, and maintenance with it, but those
+   lower rungs do not imply control. Table is the hinge. Five questions before
+   using *homeostatic*.
 8. **How to read the cases** (350). Status of each: governor = calibration (not a
    kind), glycemia = hard biological candidate, interjections = negative
    linguistic, agreement monitoring = candidate positive linguistic. Why cross-domain is legitimate for
