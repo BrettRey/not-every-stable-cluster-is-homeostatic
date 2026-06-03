@@ -1,0 +1,254 @@
+[
+  {
+    "objectID": "07-ladder-report.html",
+    "href": "07-ladder-report.html",
+    "title": "Ladder Report",
+    "section": "",
+    "text": "Code\nsource(\"R/setup.R\")\nmetrics &lt;- load_spacer_metrics()\ndat &lt;- make_process_data(metrics)\npredictors &lt;- make_predictor_set()\nmodel &lt;- fit_or_load_joint_glmer(dat, predictors = predictors, refresh = params$refresh_model)\nterms &lt;- tidy_glmer(model)"
+  },
+  {
+    "objectID": "07-ladder-report.html#result-template",
+    "href": "07-ladder-report.html#result-template",
+    "title": "Ladder Report",
+    "section": "1 Result Template",
+    "text": "1 Result Template\n\n\nCode\nknitr::kable(ladder_result_template())\n\n\n\n\n\n\n\n\n\nquestion\ncurrent_answer\n\n\n\n\nDo repairs happen?\nYes, but occurrence alone is not the target.\n\n\nDo predictors align across process?\nTest with process-by-predictor interactions in one joint model.\n\n\nWould alignment imply one controller?\nNo. Alignment would be compatible with one profile, but the task design still separates production monitoring from offline text editing.\n\n\nWould divergence matter philosophically?\nYes. Divergence supports the diagnostic warning that stable recovery can result from neighboring but non-identical stabilizers."
+  },
+  {
+    "objectID": "07-ladder-report.html#current-model-signal",
+    "href": "07-ladder-report.html#current-model-signal",
+    "title": "Ladder Report",
+    "section": "2 Current Model Signal",
+    "text": "2 Current Model Signal\n\n\nCode\nsignal &lt;- terms |&gt;\n  dplyr::filter(stringr::str_detect(term, \"processspeaker:\")) |&gt;\n  dplyr::mutate(\n    direction = dplyr::case_when(\n      estimate &gt; 0 ~ \"larger speaker slope\",\n      estimate &lt; 0 ~ \"smaller speaker slope\",\n      TRUE ~ \"no contrast\"\n    )\n  ) |&gt;\n  dplyr::arrange(dplyr::desc(abs(estimate)))\nknitr::kable(signal, digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd_error\nz_value\np_value\ndirection\n\n\n\n\nprocessspeaker:phonemic_z\n0.753\n0.084\n8.946\n0.000\nlarger speaker slope\n\n\nprocessspeaker:surprisal_z\n-0.326\n0.054\n-6.064\n0.000\nsmaller speaker slope\n\n\nprocessspeaker:semantic_z\n0.061\n0.104\n0.587\n0.557\nlarger speaker slope\n\n\nprocessspeaker:frequency_z\n-0.024\n0.056\n-0.429\n0.668\nsmaller speaker slope"
+  },
+  {
+    "objectID": "07-ladder-report.html#provisional-warrant",
+    "href": "07-ladder-report.html#provisional-warrant",
+    "title": "Ladder Report",
+    "section": "3 Provisional Warrant",
+    "text": "3 Provisional Warrant\nOn the default SPACER metric surface, the workflow should be read as a test of profile alignment. A large process-by-predictor contrast counts against the simple story that speaker self-repair and offline comprehender correction instantiate one shared correction profile.\nThat result does not show that the speaker-side process is homeostatic. Nor does it show that the comprehender-side task is a controller. The stronger philosophical use is negative and diagnostic: SPACER makes it possible to distinguish recovery of intelligibility from evidence for a single corrective-control architecture."
+  },
+  {
+    "objectID": "07-ladder-report.html#ladder-placement",
+    "href": "07-ladder-report.html#ladder-placement",
+    "title": "Ladder Report",
+    "section": "4 Ladder Placement",
+    "text": "4 Ladder Placement\n\n\nCode\nplacement &lt;- tibble::tribble(\n  ~rung, ~status, ~reason,\n  \"Projection target\", \"Met\", \"The workflow declares a profile-comparison target before modeling.\",\n  \"Stable profile\", \"Testable\", \"Repeated items and responses allow correction profiles to be estimated.\",\n  \"Network order\", \"Partial\", \"Predictor ordering is plausible but not established as causal order.\",\n  \"Maintenance\", \"Partial\", \"Speaker repair and comprehender correction are stabilizing pathways, but they are not one pathway.\",\n  \"Corrective control\", \"Not warranted from SPACER alone\", \"The dataset supports profile comparison, not direct evidence for one online controller.\"\n)\nknitr::kable(placement)\n\n\n\n\n\n\n\n\n\n\nrung\nstatus\nreason\n\n\n\n\nProjection target\nMet\nThe workflow declares a profile-comparison target before modeling.\n\n\nStable profile\nTestable\nRepeated items and responses allow correction profiles to be estimated.\n\n\nNetwork order\nPartial\nPredictor ordering is plausible but not established as causal order.\n\n\nMaintenance\nPartial\nSpeaker repair and comprehender correction are stabilizing pathways, but they are not one pathway.\n\n\nCorrective control\nNot warranted from SPACER alone\nThe dataset supports profile comparison, not direct evidence for one online controller."
+  },
+  {
+    "objectID": "07-ladder-report.html#paper-use",
+    "href": "07-ladder-report.html#paper-use",
+    "title": "Ladder Report",
+    "section": "5 Paper Use",
+    "text": "5 Paper Use\nThe cleanest use in the paper is as an empirical extension or appendix:\n\nSPACER shows how the ladder changes the empirical question. The issue is not whether correction occurs, but whether the same perturbation measures predict speaker self-repair and comprehender correction in the same way. Divergence supports the diagnostic caution that intelligible recovery can be maintained by neighboring stabilizers rather than by one specified corrective-control system."
+  },
+  {
+    "objectID": "05-model-checks.html",
+    "href": "05-model-checks.html",
+    "title": "Model Checks",
+    "section": "",
+    "text": "Code\nsource(\"R/setup.R\")\nmetrics &lt;- load_spacer_metrics()\ndat &lt;- make_process_data(metrics)\npredictors &lt;- make_predictor_set()\nmodel &lt;- fit_or_load_joint_glmer(dat, predictors = predictors, refresh = params$refresh_model)\nThe model should reproduce basic features of the data before its process contrasts are interpreted."
+  },
+  {
+    "objectID": "05-model-checks.html#observed-and-fitted-rates",
+    "href": "05-model-checks.html#observed-and-fitted-rates",
+    "title": "Model Checks",
+    "section": "1 Observed and Fitted Rates",
+    "text": "1 Observed and Fitted Rates\n\n\nCode\nchecks &lt;- observed_vs_predicted(model, dat)\nknitr::kable(checks, digits = 3)\n\n\n\n\n\nprocess\nobserved_rate\npredicted_rate\nn\n\n\n\n\ncomprehender\n0.236\n0.236\n2549\n\n\nspeaker\n0.136\n0.136\n18699\n\n\n\n\n\n\n\nCode\nplot_observed_predicted(checks)"
+  },
+  {
+    "objectID": "05-model-checks.html#simulated-correction-rates",
+    "href": "05-model-checks.html#simulated-correction-rates",
+    "title": "Model Checks",
+    "section": "2 Simulated Correction Rates",
+    "text": "2 Simulated Correction Rates\nThe following check simulates replicated outcomes from the fitted mixed model and compares process-level rates with the observed rates.\n\n\nCode\nsim_rates &lt;- simulate_process_rates(model, nsim = 100)\nplot_simulated_rates(sim_rates, dat)"
+  },
+  {
+    "objectID": "05-model-checks.html#what-this-does-not-check",
+    "href": "05-model-checks.html#what-this-does-not-check",
+    "title": "Model Checks",
+    "section": "3 What This Does Not Check",
+    "text": "3 What This Does Not Check\nThese checks are intentionally modest. They do not validate the lexical metrics, the offline comprehender task, or a causal interpretation of the slopes. They only ask whether the fitted model can reproduce broad correction rates before the interactions are used in the ladder report."
+  },
+  {
+    "objectID": "03-fake-data.html",
+    "href": "03-fake-data.html",
+    "title": "Fake Data Recovery",
+    "section": "",
+    "text": "Code\nsource(\"R/setup.R\")\nshared &lt;- simulate_correction_profiles(shared_profile = TRUE)\ndistinct &lt;- simulate_correction_profiles(shared_profile = FALSE)\nfit_shared &lt;- fit_fake_recovery(shared)\nfit_distinct &lt;- fit_fake_recovery(distinct)\nFake-data simulation checks whether the proposed model can recover the distinction that matters before it is pointed at SPACER."
+  },
+  {
+    "objectID": "03-fake-data.html#shared-profile-scenario",
+    "href": "03-fake-data.html#shared-profile-scenario",
+    "title": "Fake Data Recovery",
+    "section": "1 Shared Profile Scenario",
+    "text": "1 Shared Profile Scenario\nIn the shared-profile simulation, the process-by-predictor interactions are set to zero.\n\n\nCode\nshared_terms &lt;- summary(fit_shared)$coefficients |&gt;\n  as.data.frame() |&gt;\n  tibble::rownames_to_column(\"term\") |&gt;\n  dplyr::filter(stringr::str_detect(term, \"processspeaker:\"))\nknitr::kable(shared_terms, digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nEstimate\nStd. Error\nz value\nPr(&gt;|z|)\n\n\n\n\nprocessspeaker:semantic_z\n-0.216\n0.177\n-1.223\n0.221\n\n\nprocessspeaker:phonemic_z\n-0.179\n0.169\n-1.059\n0.290\n\n\nprocessspeaker:surprisal_z\n-0.161\n0.154\n-1.042\n0.298\n\n\nprocessspeaker:frequency_z\n-0.057\n0.163\n-0.351\n0.726"
+  },
+  {
+    "objectID": "03-fake-data.html#distinct-stabilizer-scenario",
+    "href": "03-fake-data.html#distinct-stabilizer-scenario",
+    "title": "Fake Data Recovery",
+    "section": "2 Distinct Stabilizer Scenario",
+    "text": "2 Distinct Stabilizer Scenario\nIn the distinct-profile simulation, speaker and comprehender correction differ in their phonemic-distance and surprisal slopes.\n\n\nCode\ndistinct_terms &lt;- summary(fit_distinct)$coefficients |&gt;\n  as.data.frame() |&gt;\n  tibble::rownames_to_column(\"term\") |&gt;\n  dplyr::filter(stringr::str_detect(term, \"processspeaker:\"))\nknitr::kable(distinct_terms, digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nEstimate\nStd. Error\nz value\nPr(&gt;|z|)\n\n\n\n\nprocessspeaker:semantic_z\n0.173\n0.174\n0.994\n0.320\n\n\nprocessspeaker:phonemic_z\n1.087\n0.162\n6.715\n0.000\n\n\nprocessspeaker:surprisal_z\n-0.735\n0.152\n-4.827\n0.000\n\n\nprocessspeaker:frequency_z\n0.190\n0.160\n1.189\n0.235"
+  },
+  {
+    "objectID": "03-fake-data.html#check",
+    "href": "03-fake-data.html#check",
+    "title": "Fake Data Recovery",
+    "section": "3 Check",
+    "text": "3 Check\nThe fake-data exercise is not evidence about SPACER. Its role is procedural: it checks that the model target is capable of distinguishing “same correction profile” from “different correction profile” under known conditions."
+  },
+  {
+    "objectID": "01-declare-case.html",
+    "href": "01-declare-case.html",
+    "title": "Declare the Case",
+    "section": "",
+    "text": "Code\nsource(\"R/setup.R\")\nThe diagnostic question has to be declared before the model is fit. Otherwise the analysis risks treating any successful prediction of correction as evidence for control."
+  },
+  {
+    "objectID": "01-declare-case.html#case-declaration",
+    "href": "01-declare-case.html#case-declaration",
+    "title": "Declare the Case",
+    "section": "1 Case Declaration",
+    "text": "1 Case Declaration\n\n\nCode\nknitr::kable(ladder_declaration())\n\n\n\n\n\n\n\n\n\n\ndiagnostic_step\ndeclaration_for_spacer\nevidence_or_limit\n\n\n\n\nProjection target\nPredict when an erroneous lexical item is corrected, and whether production and comprehension support the same correction profile.\nThe target is a profile comparison, not a general claim that utterance correction is homeostatic.\n\n\nStable profile\nA stable correction profile would show repeatable associations between lexical perturbation measures and correction probability.\nEvidence comes from repeated items and comprehender responses in SPACER.\n\n\nNetwork order\nCandidate ordering runs from contextual fit, lexical similarity, and phonemic distance to correction decisions.\nThese are predictors of correction, not by themselves causal ordering relations.\n\n\nMaintenance\nSpeaker self-repair and comprehender correction are candidate stabilizers of intelligible utterance recovery.\nThe comprehender task is offline text editing, so its pathway is not the same as online conversational repair.\n\n\nCorrective control\nThe strongest claim would require perturbation-sensitive correction preserving a specified higher-scale relation.\nSPACER can test profile alignment or divergence; it should not be read as direct evidence for one shared controller."
+  },
+  {
+    "objectID": "01-declare-case.html#estimand",
+    "href": "01-declare-case.html#estimand",
+    "title": "Declare the Case",
+    "section": "2 Estimand",
+    "text": "2 Estimand\nThe estimand is the contrast between two correction profiles:\n\n\nCode\nestimand &lt;- tibble::tribble(\n  ~component, ~declaration,\n  \"Outcome\", \"Whether a correction occurred.\",\n  \"Process contrast\", \"Speaker self-repair versus offline comprehender correction.\",\n  \"Predictors\", \"Semantic distance, phonemic distance, contextual predictability proxy, frequency proxy, and related lexical controls.\",\n  \"Main quantity\", \"Process-by-predictor contrasts in predicted correction probability.\",\n  \"Interpretation\", \"Aligned profiles support a shared correction profile; divergent profiles support distinct stabilizers.\"\n)\nknitr::kable(estimand)\n\n\n\n\n\n\n\n\n\ncomponent\ndeclaration\n\n\n\n\nOutcome\nWhether a correction occurred.\n\n\nProcess contrast\nSpeaker self-repair versus offline comprehender correction.\n\n\nPredictors\nSemantic distance, phonemic distance, contextual predictability proxy, frequency proxy, and related lexical controls.\n\n\nMain quantity\nProcess-by-predictor contrasts in predicted correction probability.\n\n\nInterpretation\nAligned profiles support a shared correction profile; divergent profiles support distinct stabilizers."
+  },
+  {
+    "objectID": "01-declare-case.html#warrant-conditions",
+    "href": "01-declare-case.html#warrant-conditions",
+    "title": "Declare the Case",
+    "section": "3 Warrant Conditions",
+    "text": "3 Warrant Conditions\nAn aligned coefficient profile would not by itself prove a shared controller. SPACER separates the speaker’s original production process from an offline text-editing task. The most the workflow can show directly is whether the profiles align under these measurements.\nA divergent profile is philosophically more diagnostic. It would support the paper’s caution that apparent preservation of intelligible utterance recovery can be produced by neighboring stabilizers rather than by one specified corrective-control architecture."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "SPACER Diagnostic Workflow",
+    "section": "",
+    "text": "This workflow is a companion analysis scaffold for the diagnostic ladder in Not Every Stable Cluster Is Homeostatic. It uses SPACER, a parallel dataset of spontaneous speech-production errors and offline comprehender corrections, to ask a narrow question:\nThat question is deliberately weaker than “is utterance correction homeostatic?” The workflow treats homeostasis as the last rung of the ladder, not as a label attached once repair is observed."
+  },
+  {
+    "objectID": "index.html#workflow",
+    "href": "index.html#workflow",
+    "title": "SPACER Diagnostic Workflow",
+    "section": "1 Workflow",
+    "text": "1 Workflow\n\nDeclare the case before modeling.\nExplore the data structure and the candidate predictors.\nSimulate fake data under shared-profile and distinct-profile scenarios.\nFit a joint process-by-predictor model.\nCheck the model against observed correction patterns.\nRun a small multiverse over reasonable coding choices.\nProduce a ladder report that states what rung is warranted."
+  },
+  {
+    "objectID": "index.html#inputs",
+    "href": "index.html#inputs",
+    "title": "SPACER Diagnostic Workflow",
+    "section": "2 Inputs",
+    "text": "2 Inputs\nThe workflow downloads three public files from the SPACER project repository:\n\nthe main SPACER dataset;\nthe comprehender metric file used in the authors’ exploratory analysis;\nthe speaker metric file used in the authors’ exploratory analysis.\n\nSPACER reports 1056 naturalistic utterance instances and 5808 comprehender responses (Upadhye, Sun, and Levy 2025). The metric files are used here because the present goal is not to rebuild lexical, semantic, phonemic, and surprisal measures. It is to test whether the correction profiles align once those measures are available."
+  },
+  {
+    "objectID": "index.html#render",
+    "href": "index.html#render",
+    "title": "SPACER Diagnostic Workflow",
+    "section": "3 Render",
+    "text": "3 Render\nquarto render\nThe default model is a joint lme4::glmer() fit. A heavier brms model is included in the joint-model page and can be enabled when the local Stan backend is ready."
+  },
+  {
+    "objectID": "index.html#statistical-posture",
+    "href": "index.html#statistical-posture",
+    "title": "SPACER Diagnostic Workflow",
+    "section": "4 Statistical posture",
+    "text": "4 Statistical posture\nThe workflow follows a Gelman-style sequence: declare the estimand, plot the data, use partial pooling where possible, test recovery on fake data, check the fitted model, and expose the sensitivity of the conclusion to reasonable analytic choices (Gelman et al. 2020; Steegen et al. 2016).\nThe estimand is not a null-hypothesis verdict. It is the difference between production and comprehension correction profiles, especially process-by-predictor contrasts on the probability scale."
+  },
+  {
+    "objectID": "02-explore-data.html",
+    "href": "02-explore-data.html",
+    "title": "Explore the Data",
+    "section": "",
+    "text": "Code\nsource(\"R/setup.R\")\nraw &lt;- load_spacer_raw()\nmetrics &lt;- load_spacer_metrics()\ndat &lt;- make_process_data(metrics)"
+  },
+  {
+    "objectID": "02-explore-data.html#raw-dataset",
+    "href": "02-explore-data.html#raw-dataset",
+    "title": "Explore the Data",
+    "section": "1 Raw Dataset",
+    "text": "1 Raw Dataset\n\n\nCode\nraw_summary &lt;- tibble::tibble(\n  object = c(\"SPACER raw rows\", \"SPACER raw columns\", \"Unique utterance IDs\", \"Unique comprehender subjects\"),\n  value = c(nrow(raw), ncol(raw), dplyr::n_distinct(raw$uttrID), dplyr::n_distinct(raw$subject))\n)\nknitr::kable(raw_summary)\n\n\n\n\n\nobject\nvalue\n\n\n\n\nSPACER raw rows\n5808\n\n\nSPACER raw columns\n24\n\n\nUnique utterance IDs\n1050\n\n\nUnique comprehender subjects\n64"
+  },
+  {
+    "objectID": "02-explore-data.html#modeling-surface",
+    "href": "02-explore-data.html#modeling-surface",
+    "title": "Explore the Data",
+    "section": "2 Modeling Surface",
+    "text": "2 Modeling Surface\nThe joint analysis uses the SPACER metric files, reshaped into a long process-response table.\n\n\nCode\nmodel_summary &lt;- dat |&gt;\n  dplyr::group_by(process) |&gt;\n  dplyr::summarise(\n    rows = dplyr::n(),\n    correction_rate = mean(corrected),\n    items = dplyr::n_distinct(itemCrit),\n    subjects = dplyr::n_distinct(subject),\n    .groups = \"drop\"\n  )\nknitr::kable(model_summary, digits = 3)\n\n\n\n\n\nprocess\nrows\ncorrection_rate\nitems\nsubjects\n\n\n\n\ncomprehender\n2549\n0.236\n566\n59\n\n\nspeaker\n18699\n0.136\n3989\n59\n\n\n\n\n\n\n\nCode\nplot_correction_rates(dat)"
+  },
+  {
+    "objectID": "02-explore-data.html#predictor-distributions",
+    "href": "02-explore-data.html#predictor-distributions",
+    "title": "Explore the Data",
+    "section": "3 Predictor Distributions",
+    "text": "3 Predictor Distributions\n\n\nCode\nplot_predictor_distribution(dat, \"phonemic_z\", \"Phonemic distance (z)\")\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_predictor_distribution(dat, \"semantic_z\", \"Semantic distance (z)\")\n\n\n\n\n\n\n\n\n\n\n\nCode\nplot_predictor_distribution(dat, \"surprisal_z\", \"Target minus error surprisal (z)\")"
+  },
+  {
+    "objectID": "02-explore-data.html#caution",
+    "href": "02-explore-data.html#caution",
+    "title": "Explore the Data",
+    "section": "4 Caution",
+    "text": "4 Caution\nThe speaker rows and comprehender rows are parallel analysis rows, not identical observations of one online interaction. This is why the workflow asks about aligned profiles rather than immediately treating alignment as evidence for one controller."
+  },
+  {
+    "objectID": "04-fit-joint-model.html",
+    "href": "04-fit-joint-model.html",
+    "title": "Fit the Joint Model",
+    "section": "",
+    "text": "Code\nsource(\"R/setup.R\")\nmetrics &lt;- load_spacer_metrics()\ndat &lt;- make_process_data(metrics)\npredictors &lt;- make_predictor_set()\nmodel &lt;- fit_or_load_joint_glmer(dat, predictors = predictors, refresh = params$refresh_model)\nThe default fit is a joint logistic mixed model:\nCode\nformula(model)\n\n\ncorrected ~ process * (semantic_z + phonemic_z + frequency_z + \n    surprisal_z) + (1 | uttrID) + (1 | critWindow) + (1 | subject_key)\n&lt;environment: 0xb67fe2e40&gt;\nThe process-by-predictor interactions are the main quantities. They test whether a predictor has a different association with speaker repair than with comprehender correction."
+  },
+  {
+    "objectID": "04-fit-joint-model.html#coefficients",
+    "href": "04-fit-joint-model.html#coefficients",
+    "title": "Fit the Joint Model",
+    "section": "1 Coefficients",
+    "text": "1 Coefficients\n\n\nCode\nterms &lt;- tidy_glmer(model)\nknitr::kable(terms, digits = 3)\n\n\n\n\n\nterm\nestimate\nstd_error\nz_value\np_value\n\n\n\n\n(Intercept)\n-7.342\n0.454\n-16.187\n0.000\n\n\nprocessspeaker\n2.052\n0.145\n14.186\n0.000\n\n\nsemantic_z\n0.046\n0.087\n0.533\n0.594\n\n\nphonemic_z\n-0.546\n0.062\n-8.737\n0.000\n\n\nfrequency_z\n-0.054\n0.025\n-2.126\n0.033\n\n\nsurprisal_z\n0.050\n0.031\n1.594\n0.111\n\n\nprocessspeaker:semantic_z\n0.061\n0.104\n0.587\n0.557\n\n\nprocessspeaker:phonemic_z\n0.753\n0.084\n8.946\n0.000\n\n\nprocessspeaker:frequency_z\n-0.024\n0.056\n-0.429\n0.668\n\n\nprocessspeaker:surprisal_z\n-0.326\n0.054\n-6.064\n0.000"
+  },
+  {
+    "objectID": "04-fit-joint-model.html#process-contrasts",
+    "href": "04-fit-joint-model.html#process-contrasts",
+    "title": "Fit the Joint Model",
+    "section": "2 Process Contrasts",
+    "text": "2 Process Contrasts\n\n\nCode\ninteraction_terms &lt;- terms |&gt;\n  dplyr::filter(stringr::str_detect(term, \"processspeaker:\")) |&gt;\n  dplyr::arrange(dplyr::desc(abs(estimate)))\nknitr::kable(interaction_terms, digits = 3)\n\n\n\n\n\nterm\nestimate\nstd_error\nz_value\np_value\n\n\n\n\nprocessspeaker:phonemic_z\n0.753\n0.084\n8.946\n0.000\n\n\nprocessspeaker:surprisal_z\n-0.326\n0.054\n-6.064\n0.000\n\n\nprocessspeaker:semantic_z\n0.061\n0.104\n0.587\n0.557\n\n\nprocessspeaker:frequency_z\n-0.024\n0.056\n-0.429\n0.668"
+  },
+  {
+    "objectID": "04-fit-joint-model.html#prediction-curves",
+    "href": "04-fit-joint-model.html#prediction-curves",
+    "title": "Fit the Joint Model",
+    "section": "3 Prediction Curves",
+    "text": "3 Prediction Curves\nThese are population-level predictions with random effects held out.\n\n\nCode\nphonemic_grid &lt;- make_prediction_grid(model, \"phonemic_z\", predictors)\nplot_prediction_grid(phonemic_grid, \"Phonemic distance (z)\")\n\n\n\n\n\n\n\n\n\n\n\nCode\nsurprisal_grid &lt;- make_prediction_grid(model, \"surprisal_z\", predictors)\nplot_prediction_grid(surprisal_grid, \"Target minus error surprisal (z)\")"
+  },
+  {
+    "objectID": "04-fit-joint-model.html#bayesian-fit",
+    "href": "04-fit-joint-model.html#bayesian-fit",
+    "title": "Fit the Joint Model",
+    "section": "4 Bayesian Fit",
+    "text": "4 Bayesian Fit\nThe Bayesian model is the preferred final analysis if the workflow becomes a paper appendix or companion repository. It is off by default because it requires a working Stan backend and takes longer to render.\n\n\nCode\nbayes_model &lt;- fit_joint_brms(\n  dat,\n  predictors = predictors,\n  chains = 4,\n  iter = 2000,\n  cores = 4,\n  backend = \"cmdstanr\"\n)\nbayes_model\n\n\nThe priors are weakly informative on the log-odds scale. Before using the Bayesian fit for publication, add prior predictive checks and compare posterior predictive summaries against the observed correction rates."
+  },
+  {
+    "objectID": "06-multiverse.html",
+    "href": "06-multiverse.html",
+    "title": "Multiverse",
+    "section": "",
+    "text": "Code\nsource(\"R/setup.R\")\nmetrics &lt;- load_spacer_metrics()\nA small multiverse exposes reasonable analytic choices. The default version uses fast logistic models without random effects as a screening layer. Variants that change the philosophical conclusion should be refit with the joint mixed model.\nCode\nvariants &lt;- tidyr::crossing(\n  phonemic_measure = c(\"ipa\", \"edit\"),\n  include_semantic = c(TRUE, FALSE),\n  include_frequency = c(TRUE, FALSE),\n  include_surprisal = c(TRUE, FALSE)\n) |&gt;\n  dplyr::filter(include_semantic | include_frequency | include_surprisal)\n\nfit_variant &lt;- function(phonemic_measure, include_semantic, include_frequency, include_surprisal) {\n  dat &lt;- make_process_data(metrics, phonemic_measure = phonemic_measure)\n  predictors &lt;- make_predictor_set(\n    include_semantic = include_semantic,\n    include_phonemic = TRUE,\n    include_frequency = include_frequency,\n    include_surprisal = include_surprisal,\n    include_length = FALSE\n  )\n  f &lt;- stats::as.formula(\n    paste(\"corrected ~ process * (\", paste(predictors, collapse = \" + \"), \")\")\n  )\n  model &lt;- stats::glm(f, data = dat, family = stats::binomial())\n  summary(model)$coefficients |&gt;\n    as.data.frame() |&gt;\n    tibble::rownames_to_column(\"term\") |&gt;\n    dplyr::filter(stringr::str_detect(term, \"processspeaker:\")) |&gt;\n    dplyr::transmute(term, estimate = Estimate, std_error = `Std. Error`)\n}\n\nmultiverse &lt;- variants |&gt;\n  purrr::pmap_dfr(function(...) {\n    args &lt;- list(...)\n    fit_variant(...) |&gt;\n      dplyr::mutate(\n        phonemic_measure = args$phonemic_measure,\n        include_semantic = args$include_semantic,\n        include_frequency = args$include_frequency,\n        include_surprisal = args$include_surprisal\n      )\n  })"
+  },
+  {
+    "objectID": "06-multiverse.html#interaction-estimates-across-variants",
+    "href": "06-multiverse.html#interaction-estimates-across-variants",
+    "title": "Multiverse",
+    "section": "1 Interaction Estimates Across Variants",
+    "text": "1 Interaction Estimates Across Variants\n\n\nCode\nknitr::kable(multiverse, digits = 3)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nterm\nestimate\nstd_error\nphonemic_measure\ninclude_semantic\ninclude_frequency\ninclude_surprisal\n\n\n\n\nprocessspeaker:phonemic_z\n0.836\n0.057\nedit\nFALSE\nFALSE\nTRUE\n\n\nprocessspeaker:surprisal_z\n-0.204\n0.036\nedit\nFALSE\nFALSE\nTRUE\n\n\nprocessspeaker:phonemic_z\n0.854\n0.057\nedit\nFALSE\nTRUE\nFALSE\n\n\nprocessspeaker:frequency_z\n0.001\n0.033\nedit\nFALSE\nTRUE\nFALSE\n\n\nprocessspeaker:phonemic_z\n0.837\n0.058\nedit\nFALSE\nTRUE\nTRUE\n\n\nprocessspeaker:frequency_z\n0.026\n0.034\nedit\nFALSE\nTRUE\nTRUE\n\n\nprocessspeaker:surprisal_z\n-0.207\n0.036\nedit\nFALSE\nTRUE\nTRUE\n\n\nprocessspeaker:semantic_z\n-0.284\n0.078\nedit\nTRUE\nFALSE\nFALSE\n\n\nprocessspeaker:phonemic_z\n0.924\n0.058\nedit\nTRUE\nFALSE\nFALSE\n\n\nprocessspeaker:semantic_z\n-0.304\n0.078\nedit\nTRUE\nFALSE\nTRUE\n\n\nprocessspeaker:phonemic_z\n0.903\n0.058\nedit\nTRUE\nFALSE\nTRUE\n\n\nprocessspeaker:surprisal_z\n-0.209\n0.036\nedit\nTRUE\nFALSE\nTRUE\n\n\nprocessspeaker:semantic_z\n-0.283\n0.079\nedit\nTRUE\nTRUE\nFALSE\n\n\nprocessspeaker:phonemic_z\n0.924\n0.058\nedit\nTRUE\nTRUE\nFALSE\n\n\nprocessspeaker:frequency_z\n0.009\n0.034\nedit\nTRUE\nTRUE\nFALSE\n\n\nprocessspeaker:semantic_z\n-0.314\n0.080\nedit\nTRUE\nTRUE\nTRUE\n\n\nprocessspeaker:phonemic_z\n0.908\n0.059\nedit\nTRUE\nTRUE\nTRUE\n\n\nprocessspeaker:frequency_z\n0.039\n0.034\nedit\nTRUE\nTRUE\nTRUE\n\n\nprocessspeaker:surprisal_z\n-0.215\n0.036\nedit\nTRUE\nTRUE\nTRUE\n\n\nprocessspeaker:phonemic_z\n0.723\n0.056\nipa\nFALSE\nFALSE\nTRUE\n\n\nprocessspeaker:surprisal_z\n-0.208\n0.036\nipa\nFALSE\nFALSE\nTRUE\n\n\nprocessspeaker:phonemic_z\n0.746\n0.056\nipa\nFALSE\nTRUE\nFALSE\n\n\nprocessspeaker:frequency_z\n0.015\n0.034\nipa\nFALSE\nTRUE\nFALSE\n\n\nprocessspeaker:phonemic_z\n0.727\n0.056\nipa\nFALSE\nTRUE\nTRUE\n\n\nprocessspeaker:frequency_z\n0.041\n0.034\nipa\nFALSE\nTRUE\nTRUE\n\n\nprocessspeaker:surprisal_z\n-0.213\n0.036\nipa\nFALSE\nTRUE\nTRUE\n\n\nprocessspeaker:semantic_z\n-0.300\n0.077\nipa\nTRUE\nFALSE\nFALSE\n\n\nprocessspeaker:phonemic_z\n0.820\n0.056\nipa\nTRUE\nFALSE\nFALSE\n\n\nprocessspeaker:semantic_z\n-0.317\n0.078\nipa\nTRUE\nFALSE\nTRUE\n\n\nprocessspeaker:phonemic_z\n0.795\n0.057\nipa\nTRUE\nFALSE\nTRUE\n\n\nprocessspeaker:surprisal_z\n-0.213\n0.036\nipa\nTRUE\nFALSE\nTRUE\n\n\nprocessspeaker:semantic_z\n-0.304\n0.079\nipa\nTRUE\nTRUE\nFALSE\n\n\nprocessspeaker:phonemic_z\n0.823\n0.057\nipa\nTRUE\nTRUE\nFALSE\n\n\nprocessspeaker:frequency_z\n0.027\n0.034\nipa\nTRUE\nTRUE\nFALSE\n\n\nprocessspeaker:semantic_z\n-0.330\n0.079\nipa\nTRUE\nTRUE\nTRUE\n\n\nprocessspeaker:phonemic_z\n0.804\n0.057\nipa\nTRUE\nTRUE\nTRUE\n\n\nprocessspeaker:frequency_z\n0.057\n0.035\nipa\nTRUE\nTRUE\nTRUE\n\n\nprocessspeaker:surprisal_z\n-0.221\n0.036\nipa\nTRUE\nTRUE\nTRUE\n\n\n\n\n\n\n\nCode\nggplot2::ggplot(multiverse, ggplot2::aes(x = estimate, y = term, color = phonemic_measure)) +\n  ggplot2::geom_vline(xintercept = 0, linetype = \"dashed\") +\n  ggplot2::geom_point(alpha = 0.75) +\n  ggplot2::labs(x = \"Process interaction estimate\", y = NULL, color = \"Phonemic measure\")"
+  },
+  {
+    "objectID": "06-multiverse.html#interpretation-rule",
+    "href": "06-multiverse.html#interpretation-rule",
+    "title": "Multiverse",
+    "section": "2 Interpretation Rule",
+    "text": "2 Interpretation Rule\nThe multiverse is not a pile of robustness badges. Its job is to identify whether the ladder conclusion depends on fragile coding choices. If the process-by-phonemic-distance contrast persists across reasonable variants, it is a strong candidate for the report. If a contrast appears only under one coding path, it should be treated as exploratory."
+  }
+]
