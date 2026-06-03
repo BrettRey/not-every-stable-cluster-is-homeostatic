@@ -6,7 +6,7 @@ Not every stable cluster is homeostatic: Stability, network order, and control i
 
 ## Stage
 
-Seed project scaffolded on 2026-05-28. Public GitHub repo created as infrastructure for a short philosophy-of-science article. Current draft is diagnostic-ladder-first and buildable. Preprint posted at PhilArchive on 2026-06-01: https://philarchive.org/rec/REYNES. Primary target locked: Journal for General Philosophy of Science.
+Seed project scaffolded on 2026-05-28. Public GitHub repo created as infrastructure for a short philosophy-of-science article. Current draft is diagnostic-ladder-first and buildable. Preprint posted at PhilArchive on 2026-06-01: https://philarchive.org/rec/REYNES. A companion SPACER diagnostic supplement is live at https://brettrey.github.io/not-every-stable-cluster-is-homeostatic/ and frozen as GitHub release `spacer-supplement-2026-06-03`. Primary target locked: Journal for General Philosophy of Science.
 
 ## Working Thesis
 
@@ -26,6 +26,7 @@ Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats 
 - Add a moderate amount of scaffolding for JGPS readers: Weinberger's control account, glycemic regulation, interjections, and why cross-domain cases are legitimate.
 - If expanding the grammaticality/agreement positive linguistic case, consult `../Grammaticality_de_idealized/subprojects/operator-stratum/`: the candidate controlled relation is operator-value coherence and repair, not "grammar" in general.
 - If preparing blind review, create an anonymized manuscript without author block, ORCID, contact footnote, acknowledgements, or LLM declaration in the main file.
+- For blind review, also anonymize or temporarily remove the public data/code availability links because they point to the BrettRey repository and GitHub Pages site.
 - Create a separate title-page/declarations file before submission.
 - Run the saved reviewer board in `advisory-board.md`: Khalidi, Onishi, Weinberger, and Ereshefsky.
 
@@ -38,6 +39,7 @@ Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats 
 - `dingemanse2024`, `ameka1992`, and `norrick2009`: interjections as stable pragmatic projectibility.
 - `fitzgeraldBean2018` and `bichMossioSoto2020`: glycemic regulation as a harder biological control case.
 - `corbett2006`, `bockMiller1991`, and `levelt1983`: agreement monitoring/repair as the candidate positive linguistic case.
+- `upadhyeEtAl2025spacer`: SPACER dataset for the companion speaker/comprehender correction-profile analysis.
 
 ## Session Notes
 
@@ -71,3 +73,13 @@ Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats 
 - Added the central bibliography key `reynolds2026notEveryStableCluster` for the PhilArchive record.
 - Updated portfolio, website publications, and CV tracking; website commit `bd5bc90` was pushed.
 - Next project action remains the anonymized Journal for General Philosophy of Science submission package.
+
+### 2026-06-03 Session Notes
+
+- Built a companion Quarto workflow in `analysis/spacer-diagnostic/` for the SPACER speaker/comprehender repair dataset.
+- Rendered and published the workflow to GitHub Pages: https://brettrey.github.io/not-every-stable-cluster-is-homeostatic/.
+- Added a verified SPACER citation (`upadhyeEtAl2025spacer`) and revised the discussion to say the analysis is a proof of concept for the diagnostic, not evidence that correction itself is homeostasis.
+- Added a data/code availability section linking the live supplement and source workflow; raw SPACER data are downloaded from the original public project and are not redistributed here.
+- Shipped source commit `3de4e38` to `main`, published the rendered site on `gh-pages` commit `4b785a2`, and created GitHub release `spacer-supplement-2026-06-03`.
+- Verification: Quarto render succeeded, `make` reports the PDF up to date, manuscript logs have no unresolved citation/reference warnings, GitHub Pages status is `built`, and the live supplement returns HTTP 200.
+- Local caveat: `notes/spacer-revision-plan.md` remains untracked because it is a Roughdraft checkpoint containing review comments.

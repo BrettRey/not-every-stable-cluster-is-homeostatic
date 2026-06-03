@@ -65,3 +65,7 @@
 2026-06-01 -- Post the current version as a PhilArchive preprint: https://philarchive.org/rec/REYNES. Reason: the paper is in good enough shape for public circulation while the JGPS submission package is prepared separately.
 
 2026-06-02 -- Add operator-stratum as a next-touch guardrail for the positive linguistic case. Reason: if the JGPS version expands grammaticality or agreement monitoring, the controlled relation should be framed as operator-value coherence and repair rather than grammar in general. This keeps the positive linguistic case parallel to the interjections negative case without overgeneralizing homeostasis.
+
+2026-06-03 -- Add SPACER as a companion empirical proof of concept, not as a new positive homeostasis case. Reason: the dataset lets the diagnostic compare speaker-side self-repair and comprehender-side correction profiles under lexical substitution perturbations. The preliminary divergence in phonemic-distance and surprisal effects supports the paper's caution that intelligibility recovery may come from neighbouring stabilizers rather than one shared corrective-control architecture.
+
+2026-06-03 -- Host the SPACER diagnostic as a Quarto supplement on GitHub Pages with a frozen GitHub release, while not redistributing raw SPACER data. Reason: a workflow is the right artifact because the main work is case declaration, model checking, and interpretive reporting rather than a reusable R package API. GitHub Pages gives a readable live supplement; the release gives an archival trigger point for Zenodo if the repository is connected.
