@@ -20,6 +20,14 @@ make
 
 Do not use LuaLaTeX; it can damage the PDF text layer.
 
+## Supplementary analysis
+
+The SPACER diagnostic workflow is published at:
+
+<https://brettrey.github.io/not-every-stable-cluster-is-homeostatic/>
+
+Source lives in `analysis/spacer-diagnostic/`. The workflow downloads the public SPACER data from the original project repository rather than vendoring the raw data here.
+
 ## Source Policy
 
 The repo does not vendor article PDFs. Source PDFs and markdown extracts are kept in the portfolio-level `literature/` folder where licensing and provenance can be tracked separately.

@@ -13,6 +13,7 @@ project:
 
 website:
   title: "SPACER Diagnostic Workflow"
+  site-url: "https://brettrey.github.io/not-every-stable-cluster-is-homeostatic/"
   navbar:
     left:
       - text: "Overview"

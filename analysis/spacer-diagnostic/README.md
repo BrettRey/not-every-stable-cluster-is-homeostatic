@@ -4,6 +4,10 @@ This is a Quarto workflow for a worked example based on SPACER, the parallel dat
 
 The workflow asks whether speaker-side self-repair and comprehender-side correction have aligned correction profiles. The philosophical target is not automatic detection of homeostasis. It is a disciplined ladder report: projection target, perturbation, tracked relation, response pathway, higher-scale relation, and warranted rung.
 
+Published site:
+
+<https://brettrey.github.io/not-every-stable-cluster-is-homeostatic/>
+
 ## Render
 
 From this directory:
