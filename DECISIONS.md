@@ -16,7 +16,7 @@
 
 2026-05-28 -- Treat the Watt governor as a calibration case, not as a kind. Reason: the paper is about projectible kinds, but the governor supplies the clearest control structure that candidate kinds can be tested against.
 
-2026-05-28 -- Treat network order broadly across domains. Reason: biological and mechanical cases may involve causal order, while linguistic and social cases may involve functional, conventional, sequential, or evidential dependencies.
+2026-05-28 -- Treat network order broadly across domains. Reason: biological and mechanical cases may involve causal order, while linguistic and social cases may involve functional, conventional, sequential, normative, or evidential dependencies.
 
 2026-05-28 -- Add grammaticality as the likely positive linguistic case for future expansion. Reason: interjections are a useful negative case; grammaticality better tests whether correction, repair, acquisition, and transmission can form a coordinated control architecture.
 
@@ -45,3 +45,23 @@
 2026-06-01 -- Reframe the paper around a five-step diagnostic ladder: projection target, stable profile, network order, maintenance, corrective control. Reason: the prose synthesis across the HPC portfolio showed that the paper's strongest role is to block a common slide from stable clustering to stabilizer to homeostasis to projectible kind. The revised order starts with what the category lets us project, then asks what profile supports it, what order makes the profile non-accidental, what maintains it, and only then whether maintenance is corrective control.
 
 2026-06-01 -- Keep the cases in their existing roles under the new ladder: Watt governor as calibration, glycemic regulation as strict biological control, interjections as the negative linguistic case, and agreement monitoring/repair as the positive linguistic candidate. Reason: this case architecture lets the paper use examples diagnostically rather than as a survey. The governor shows uncontroversial control without being a kind; glycemia shows strict control where relation-preservation matters; interjections show stable pragmatic projectibility and partial network order without demonstrated corrective control; agreement monitoring shows what a linguistic corrective loop would have to look like.
+
+2026-06-01 -- Add a light cross-citation to the English interjections manuscript. Reason: the two planned preprints should acknowledge their division of labour without becoming mutually dependent: this paper uses interjections as a negative diagnostic case, while the interjections paper supplies the fuller linguistic treatment.
+
+2026-06-01 -- Group the four cases under a single top-level "The cases" section, with each case as a substantial subsection. Reason: each case has a distinct evidential role in the ladder, but grouping them makes the paper's structure cleaner and keeps the cases from looking like four independent mini-papers. The Watt governor calibrates control, glycemic regulation stress-tests strict biological control, interjections test overextension below corrective control, and agreement monitoring gives the candidate positive linguistic loop.
+
+2026-06-01 -- Do not add a Pearl-style structural-causal-model analysis to the JGPS draft. Reason: Woodward already supplies the intervention/invariance bridge, and Weinberger already supplies the needed contrast between static causal models and dynamic control. Pearl-style formalism could help a later technical appendix, but in this article it would add notation and a new literature burden without strengthening the diagnostic ladder.
+
+2026-06-01 -- Reframe the interjections case around interjectional uses and form-sequence constructions. Reason: the contrast case should not project from lexeme-level membership alone. Broad category-level projections are weak, while stronger projections come from situated token uses such as `oh` in change-of-state environments, `huh?` in repair-initiation environments, and `uh` in delay or floor-holding environments. The revision separates observed cues, projected uptake, maintenance scales, and candidate control loops.
+
+2026-06-01 -- Tighten level discipline across all cases. Reason: the cases are diagnostic probes rather than parallel kind candidates. The Watt governor now calibrates control-system predictability rather than Boyd-style kind projectibility; glycemic regulation separates regulated variable, maintaining architecture, and projectible profile; agreement monitoring is restricted to monitored agreement production, with the attractor as perturbation and the agreement error as failure state.
+
+2026-06-01 -- Do not add a figure. Reason: the diagnostic table already does the visual work needed, and a ladder figure could make the framework look more hierarchical or exhaustive than intended.
+
+2026-06-01 -- Replace "interjectional uses" with "interjection tokens" in the manuscript. Reason: "use" risked sounding vague for a JGPS readership. "Interjection token" marks the level more clearly while allowing the paper to say that the token is an interjection in that occurrence, even when the same form belongs to another category elsewhere.
+
+2026-06-01 -- Add Miller 2021 as a footnote background citation in the interjection-token section. Reason: Miller supports the broader word-kind-as-HPC context, while the manuscript's live claim remains narrower and token-level.
+
+2026-06-01 -- Post the current version as a PhilArchive preprint: https://philarchive.org/rec/REYNES. Reason: the paper is in good enough shape for public circulation while the JGPS submission package is prepared separately.
+
+2026-06-02 -- Add operator-stratum as a next-touch guardrail for the positive linguistic case. Reason: if the JGPS version expands grammaticality or agreement monitoring, the controlled relation should be framed as operator-value coherence and repair rather than grammar in general. This keeps the positive linguistic case parallel to the interjections negative case without overgeneralizing homeostasis.

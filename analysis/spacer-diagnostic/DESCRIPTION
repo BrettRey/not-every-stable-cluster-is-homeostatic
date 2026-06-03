@@ -1,0 +1,25 @@
+Package: spacerDiagnostic
+Title: SPACER Diagnostic Workflow
+Version: 0.0.0.9000
+Authors@R:
+    person("Brett", "Reynolds", role = c("aut", "cre"),
+           email = "brett.reynolds@humber.ca")
+Description: Quarto workflow for testing whether speaker and comprehender correction profiles in SPACER support a shared corrective-control interpretation or distinct stabilizers.
+License: CC BY 4.0
+Encoding: UTF-8
+Imports:
+    bayesplot,
+    brms,
+    dplyr,
+    ggplot2,
+    knitr,
+    lme4,
+    loo,
+    posterior,
+    purrr,
+    readr,
+    rmarkdown,
+    scales,
+    stringr,
+    tibble,
+    tidyr

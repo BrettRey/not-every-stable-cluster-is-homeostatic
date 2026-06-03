@@ -1,0 +1,37 @@
+---
+title: "Declare the Case"
+---
+
+```{r}
+source("R/setup.R")
+```
+
+The diagnostic question has to be declared before the model is fit. Otherwise the analysis risks treating any successful prediction of correction as evidence for control.
+
+## Case Declaration
+
+```{r}
+knitr::kable(ladder_declaration())
+```
+
+## Estimand
+
+The estimand is the contrast between two correction profiles:
+
+```{r}
+estimand <- tibble::tribble(
+  ~component, ~declaration,
+  "Outcome", "Whether a correction occurred.",
+  "Process contrast", "Speaker self-repair versus offline comprehender correction.",
+  "Predictors", "Semantic distance, phonemic distance, contextual predictability proxy, frequency proxy, and related lexical controls.",
+  "Main quantity", "Process-by-predictor contrasts in predicted correction probability.",
+  "Interpretation", "Aligned profiles support a shared correction profile; divergent profiles support distinct stabilizers."
+)
+knitr::kable(estimand)
+```
+
+## Warrant Conditions
+
+An aligned coefficient profile would not by itself prove a shared controller. SPACER separates the speaker's original production process from an offline text-editing task. The most the workflow can show directly is whether the profiles align under these measurements.
+
+A divergent profile is philosophically more diagnostic. It would support the paper's caution that apparent preservation of intelligible utterance recovery can be produced by neighboring stabilizers rather than by one specified corrective-control architecture.

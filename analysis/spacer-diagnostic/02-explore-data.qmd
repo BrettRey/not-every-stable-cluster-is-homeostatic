@@ -1,0 +1,59 @@
+---
+title: "Explore the Data"
+---
+
+```{r}
+source("R/setup.R")
+raw <- load_spacer_raw()
+metrics <- load_spacer_metrics()
+dat <- make_process_data(metrics)
+```
+
+## Raw Dataset
+
+```{r}
+raw_summary <- tibble::tibble(
+  object = c("SPACER raw rows", "SPACER raw columns", "Unique utterance IDs", "Unique comprehender subjects"),
+  value = c(nrow(raw), ncol(raw), dplyr::n_distinct(raw$uttrID), dplyr::n_distinct(raw$subject))
+)
+knitr::kable(raw_summary)
+```
+
+## Modeling Surface
+
+The joint analysis uses the SPACER metric files, reshaped into a long process-response table.
+
+```{r}
+model_summary <- dat |>
+  dplyr::group_by(process) |>
+  dplyr::summarise(
+    rows = dplyr::n(),
+    correction_rate = mean(corrected),
+    items = dplyr::n_distinct(itemCrit),
+    subjects = dplyr::n_distinct(subject),
+    .groups = "drop"
+  )
+knitr::kable(model_summary, digits = 3)
+```
+
+```{r}
+plot_correction_rates(dat)
+```
+
+## Predictor Distributions
+
+```{r}
+plot_predictor_distribution(dat, "phonemic_z", "Phonemic distance (z)")
+```
+
+```{r}
+plot_predictor_distribution(dat, "semantic_z", "Semantic distance (z)")
+```
+
+```{r}
+plot_predictor_distribution(dat, "surprisal_z", "Target minus error surprisal (z)")
+```
+
+## Caution
+
+The speaker rows and comprehender rows are parallel analysis rows, not identical observations of one online interaction. This is why the workflow asks about aligned profiles rather than immediately treating alignment as evidence for one controller.

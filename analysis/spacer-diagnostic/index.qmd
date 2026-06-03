@@ -1,0 +1,44 @@
+---
+title: "SPACER Diagnostic Workflow"
+subtitle: "Correction profiles, stabilizers, and the top rung of the ladder"
+---
+
+This workflow is a companion analysis scaffold for the diagnostic ladder in *Not Every Stable Cluster Is Homeostatic*. It uses SPACER, a parallel dataset of spontaneous speech-production errors and offline comprehender corrections, to ask a narrow question:
+
+> When a lexical substitution perturbs an utterance, do speaker self-repairs and comprehender corrections have one aligned correction profile, or do they look like neighboring but non-identical stabilizers?
+
+That question is deliberately weaker than "is utterance correction homeostatic?" The workflow treats homeostasis as the last rung of the ladder, not as a label attached once repair is observed.
+
+## Workflow
+
+1. Declare the case before modeling.
+2. Explore the data structure and the candidate predictors.
+3. Simulate fake data under shared-profile and distinct-profile scenarios.
+4. Fit a joint process-by-predictor model.
+5. Check the model against observed correction patterns.
+6. Run a small multiverse over reasonable coding choices.
+7. Produce a ladder report that states what rung is warranted.
+
+## Inputs
+
+The workflow downloads three public files from the SPACER project repository:
+
+- the main SPACER dataset;
+- the comprehender metric file used in the authors' exploratory analysis;
+- the speaker metric file used in the authors' exploratory analysis.
+
+SPACER reports 1056 naturalistic utterance instances and 5808 comprehender responses [@upadhyeEtAl2025spacer]. The metric files are used here because the present goal is not to rebuild lexical, semantic, phonemic, and surprisal measures. It is to test whether the correction profiles align once those measures are available.
+
+## Render
+
+```bash
+quarto render
+```
+
+The default model is a joint `lme4::glmer()` fit. A heavier `brms` model is included in the joint-model page and can be enabled when the local Stan backend is ready.
+
+## Statistical posture
+
+The workflow follows a Gelman-style sequence: declare the estimand, plot the data, use partial pooling where possible, test recovery on fake data, check the fitted model, and expose the sensitivity of the conclusion to reasonable analytic choices [@gelmanEtAl2020bayesianWorkflow; @steegenEtAl2016multiverse].
+
+The estimand is not a null-hypothesis verdict. It is the difference between production and comprehension correction profiles, especially process-by-predictor contrasts on the probability scale.

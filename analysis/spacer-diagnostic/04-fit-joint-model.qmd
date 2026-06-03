@@ -1,0 +1,71 @@
+---
+title: "Fit the Joint Model"
+params:
+  refresh_model: false
+  fit_bayes: false
+---
+
+```{r}
+source("R/setup.R")
+metrics <- load_spacer_metrics()
+dat <- make_process_data(metrics)
+predictors <- make_predictor_set()
+model <- fit_or_load_joint_glmer(dat, predictors = predictors, refresh = params$refresh_model)
+```
+
+The default fit is a joint logistic mixed model:
+
+```{r}
+formula(model)
+```
+
+The process-by-predictor interactions are the main quantities. They test whether a predictor has a different association with speaker repair than with comprehender correction.
+
+## Coefficients
+
+```{r}
+terms <- tidy_glmer(model)
+knitr::kable(terms, digits = 3)
+```
+
+## Process Contrasts
+
+```{r}
+interaction_terms <- terms |>
+  dplyr::filter(stringr::str_detect(term, "processspeaker:")) |>
+  dplyr::arrange(dplyr::desc(abs(estimate)))
+knitr::kable(interaction_terms, digits = 3)
+```
+
+## Prediction Curves
+
+These are population-level predictions with random effects held out.
+
+```{r}
+phonemic_grid <- make_prediction_grid(model, "phonemic_z", predictors)
+plot_prediction_grid(phonemic_grid, "Phonemic distance (z)")
+```
+
+```{r}
+surprisal_grid <- make_prediction_grid(model, "surprisal_z", predictors)
+plot_prediction_grid(surprisal_grid, "Target minus error surprisal (z)")
+```
+
+## Bayesian Fit
+
+The Bayesian model is the preferred final analysis if the workflow becomes a paper appendix or companion repository. It is off by default because it requires a working Stan backend and takes longer to render.
+
+```{r}
+#| eval: !expr params$fit_bayes
+bayes_model <- fit_joint_brms(
+  dat,
+  predictors = predictors,
+  chains = 4,
+  iter = 2000,
+  cores = 4,
+  backend = "cmdstanr"
+)
+bayes_model
+```
+
+The priors are weakly informative on the log-odds scale. Before using the Bayesian fit for publication, add prior predictive checks and compare posterior predictive summaries against the observed correction rates.

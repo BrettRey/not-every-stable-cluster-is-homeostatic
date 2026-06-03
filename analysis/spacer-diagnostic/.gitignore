@@ -1,0 +1,15 @@
+/.quarto/
+/_freeze/
+/_site/
+/*_cache/
+/*_files/
+/.Rproj.user/
+.Rhistory
+.RData
+
+# Downloaded and derived data are recreated by the workflow.
+/data/raw/*.csv
+/data/processed/*.rds
+/data/processed/*.csv
+
+**/*.quarto_ipynb

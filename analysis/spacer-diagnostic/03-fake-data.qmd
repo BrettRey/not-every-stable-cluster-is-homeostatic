@@ -1,0 +1,41 @@
+---
+title: "Fake Data Recovery"
+---
+
+```{r}
+source("R/setup.R")
+shared <- simulate_correction_profiles(shared_profile = TRUE)
+distinct <- simulate_correction_profiles(shared_profile = FALSE)
+fit_shared <- fit_fake_recovery(shared)
+fit_distinct <- fit_fake_recovery(distinct)
+```
+
+Fake-data simulation checks whether the proposed model can recover the distinction that matters before it is pointed at SPACER.
+
+## Shared Profile Scenario
+
+In the shared-profile simulation, the process-by-predictor interactions are set to zero.
+
+```{r}
+shared_terms <- summary(fit_shared)$coefficients |>
+  as.data.frame() |>
+  tibble::rownames_to_column("term") |>
+  dplyr::filter(stringr::str_detect(term, "processspeaker:"))
+knitr::kable(shared_terms, digits = 3)
+```
+
+## Distinct Stabilizer Scenario
+
+In the distinct-profile simulation, speaker and comprehender correction differ in their phonemic-distance and surprisal slopes.
+
+```{r}
+distinct_terms <- summary(fit_distinct)$coefficients |>
+  as.data.frame() |>
+  tibble::rownames_to_column("term") |>
+  dplyr::filter(stringr::str_detect(term, "processspeaker:"))
+knitr::kable(distinct_terms, digits = 3)
+```
+
+## Check
+
+The fake-data exercise is not evidence about SPACER. Its role is procedural: it checks that the model target is capable of distinguishing "same correction profile" from "different correction profile" under known conditions.

@@ -1,0 +1,39 @@
+---
+title: "Model Checks"
+params:
+  refresh_model: false
+---
+
+```{r}
+source("R/setup.R")
+metrics <- load_spacer_metrics()
+dat <- make_process_data(metrics)
+predictors <- make_predictor_set()
+model <- fit_or_load_joint_glmer(dat, predictors = predictors, refresh = params$refresh_model)
+```
+
+The model should reproduce basic features of the data before its process contrasts are interpreted.
+
+## Observed and Fitted Rates
+
+```{r}
+checks <- observed_vs_predicted(model, dat)
+knitr::kable(checks, digits = 3)
+```
+
+```{r}
+plot_observed_predicted(checks)
+```
+
+## Simulated Correction Rates
+
+The following check simulates replicated outcomes from the fitted mixed model and compares process-level rates with the observed rates.
+
+```{r}
+sim_rates <- simulate_process_rates(model, nsim = 100)
+plot_simulated_rates(sim_rates, dat)
+```
+
+## What This Does Not Check
+
+These checks are intentionally modest. They do not validate the lexical metrics, the offline comprehender task, or a causal interpretation of the slopes. They only ask whether the fitted model can reproduce broad correction rates before the interactions are used in the ladder report.

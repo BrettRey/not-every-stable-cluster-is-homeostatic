@@ -1,0 +1,69 @@
+---
+title: "Multiverse"
+---
+
+```{r}
+source("R/setup.R")
+metrics <- load_spacer_metrics()
+```
+
+A small multiverse exposes reasonable analytic choices. The default version uses fast logistic models without random effects as a screening layer. Variants that change the philosophical conclusion should be refit with the joint mixed model.
+
+```{r}
+variants <- tidyr::crossing(
+  phonemic_measure = c("ipa", "edit"),
+  include_semantic = c(TRUE, FALSE),
+  include_frequency = c(TRUE, FALSE),
+  include_surprisal = c(TRUE, FALSE)
+) |>
+  dplyr::filter(include_semantic | include_frequency | include_surprisal)
+
+fit_variant <- function(phonemic_measure, include_semantic, include_frequency, include_surprisal) {
+  dat <- make_process_data(metrics, phonemic_measure = phonemic_measure)
+  predictors <- make_predictor_set(
+    include_semantic = include_semantic,
+    include_phonemic = TRUE,
+    include_frequency = include_frequency,
+    include_surprisal = include_surprisal,
+    include_length = FALSE
+  )
+  f <- stats::as.formula(
+    paste("corrected ~ process * (", paste(predictors, collapse = " + "), ")")
+  )
+  model <- stats::glm(f, data = dat, family = stats::binomial())
+  summary(model)$coefficients |>
+    as.data.frame() |>
+    tibble::rownames_to_column("term") |>
+    dplyr::filter(stringr::str_detect(term, "processspeaker:")) |>
+    dplyr::transmute(term, estimate = Estimate, std_error = `Std. Error`)
+}
+
+multiverse <- variants |>
+  purrr::pmap_dfr(function(...) {
+    args <- list(...)
+    fit_variant(...) |>
+      dplyr::mutate(
+        phonemic_measure = args$phonemic_measure,
+        include_semantic = args$include_semantic,
+        include_frequency = args$include_frequency,
+        include_surprisal = args$include_surprisal
+      )
+  })
+```
+
+## Interaction Estimates Across Variants
+
+```{r}
+knitr::kable(multiverse, digits = 3)
+```
+
+```{r}
+ggplot2::ggplot(multiverse, ggplot2::aes(x = estimate, y = term, color = phonemic_measure)) +
+  ggplot2::geom_vline(xintercept = 0, linetype = "dashed") +
+  ggplot2::geom_point(alpha = 0.75) +
+  ggplot2::labs(x = "Process interaction estimate", y = NULL, color = "Phonemic measure")
+```
+
+## Interpretation Rule
+
+The multiverse is not a pile of robustness badges. Its job is to identify whether the ladder conclusion depends on fragile coding choices. If the process-by-phonemic-distance contrast persists across reasonable variants, it is a strong candidate for the report. If a contrast appears only under one coding path, it should be treated as exploratory.

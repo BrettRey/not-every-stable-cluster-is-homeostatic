@@ -1,0 +1,62 @@
+---
+title: "Ladder Report"
+params:
+  refresh_model: false
+---
+
+```{r}
+source("R/setup.R")
+metrics <- load_spacer_metrics()
+dat <- make_process_data(metrics)
+predictors <- make_predictor_set()
+model <- fit_or_load_joint_glmer(dat, predictors = predictors, refresh = params$refresh_model)
+terms <- tidy_glmer(model)
+```
+
+## Result Template
+
+```{r}
+knitr::kable(ladder_result_template())
+```
+
+## Current Model Signal
+
+```{r}
+signal <- terms |>
+  dplyr::filter(stringr::str_detect(term, "processspeaker:")) |>
+  dplyr::mutate(
+    direction = dplyr::case_when(
+      estimate > 0 ~ "larger speaker slope",
+      estimate < 0 ~ "smaller speaker slope",
+      TRUE ~ "no contrast"
+    )
+  ) |>
+  dplyr::arrange(dplyr::desc(abs(estimate)))
+knitr::kable(signal, digits = 3)
+```
+
+## Provisional Warrant
+
+On the default SPACER metric surface, the workflow should be read as a test of profile alignment. A large process-by-predictor contrast counts against the simple story that speaker self-repair and offline comprehender correction instantiate one shared correction profile.
+
+That result does not show that the speaker-side process is homeostatic. Nor does it show that the comprehender-side task is a controller. The stronger philosophical use is negative and diagnostic: SPACER makes it possible to distinguish recovery of intelligibility from evidence for a single corrective-control architecture.
+
+## Ladder Placement
+
+```{r}
+placement <- tibble::tribble(
+  ~rung, ~status, ~reason,
+  "Projection target", "Met", "The workflow declares a profile-comparison target before modeling.",
+  "Stable profile", "Testable", "Repeated items and responses allow correction profiles to be estimated.",
+  "Network order", "Partial", "Predictor ordering is plausible but not established as causal order.",
+  "Maintenance", "Partial", "Speaker repair and comprehender correction are stabilizing pathways, but they are not one pathway.",
+  "Corrective control", "Not warranted from SPACER alone", "The dataset supports profile comparison, not direct evidence for one online controller."
+)
+knitr::kable(placement)
+```
+
+## Paper Use
+
+The cleanest use in the paper is as an empirical extension or appendix:
+
+> SPACER shows how the ladder changes the empirical question. The issue is not whether correction occurs, but whether the same perturbation measures predict speaker self-repair and comprehender correction in the same way. Divergence supports the diagnostic caution that intelligible recovery can be maintained by neighboring stabilizers rather than by one specified corrective-control system.

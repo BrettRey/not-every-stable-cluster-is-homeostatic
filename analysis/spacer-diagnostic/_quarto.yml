@@ -1,0 +1,51 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - 01-declare-case.qmd
+    - 02-explore-data.qmd
+    - 03-fake-data.qmd
+    - 04-fit-joint-model.qmd
+    - 05-model-checks.qmd
+    - 06-multiverse.qmd
+    - 07-ladder-report.qmd
+
+website:
+  title: "SPACER Diagnostic Workflow"
+  navbar:
+    left:
+      - text: "Overview"
+        href: index.qmd
+      - text: "Declare Case"
+        href: 01-declare-case.qmd
+      - text: "Explore"
+        href: 02-explore-data.qmd
+      - text: "Fake Data"
+        href: 03-fake-data.qmd
+      - text: "Joint Model"
+        href: 04-fit-joint-model.qmd
+      - text: "Checks"
+        href: 05-model-checks.qmd
+      - text: "Multiverse"
+        href: 06-multiverse.qmd
+      - text: "Report"
+        href: 07-ladder-report.qmd
+
+execute:
+  warning: false
+  message: false
+  freeze: auto
+  cache: true
+
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: true
+    code-tools: true
+    theme: cosmo
+    df-print: paged
+
+bibliography: references.bib

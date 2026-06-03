@@ -6,7 +6,7 @@ Not every stable cluster is homeostatic: Stability, network order, and control i
 
 ## Stage
 
-Seed project scaffolded on 2026-05-28. Public GitHub repo created as infrastructure for a short philosophy-of-science article. Current draft is diagnostic-ladder-first and buildable. Primary target locked: Journal for General Philosophy of Science.
+Seed project scaffolded on 2026-05-28. Public GitHub repo created as infrastructure for a short philosophy-of-science article. Current draft is diagnostic-ladder-first and buildable. Preprint posted at PhilArchive on 2026-06-01: https://philarchive.org/rec/REYNES. Primary target locked: Journal for General Philosophy of Science.
 
 ## Working Thesis
 
@@ -21,8 +21,10 @@ Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats 
 ## Immediate Next Actions
 
 - Develop the paper as a compact JGPS research article, targeting 5,500--7,000 words.
+- Prepare the JGPS submission package from the PhilArchive version: anonymized manuscript, separate title page, and declarations.
 - Tighten the Boyd/Khalidi exegetical contrast without turning the paper into a survey.
 - Add a moderate amount of scaffolding for JGPS readers: Weinberger's control account, glycemic regulation, interjections, and why cross-domain cases are legitimate.
+- If expanding the grammaticality/agreement positive linguistic case, consult `../Grammaticality_de_idealized/subprojects/operator-stratum/`: the candidate controlled relation is operator-value coherence and repair, not "grammar" in general.
 - If preparing blind review, create an anonymized manuscript without author block, ORCID, contact footnote, acknowledgements, or LLM declaration in the main file.
 - Create a separate title-page/declarations file before submission.
 - Run the saved reviewer board in `advisory-board.md`: Khalidi, Onishi, Weinberger, and Ereshefsky.
@@ -60,3 +62,12 @@ Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats 
 - Read the prose synthesis report at `Project-Management/analysis/reports/prose-synthesis-hpc-stability-interjections-2026-06-01.md`.
 - Reframed the article around the diagnostic ladder: projection target -> stable profile -> network order -> maintenance -> corrective control.
 - Kept the case architecture: Watt governor as calibration, glycemic regulation as strict control, interjections as the negative linguistic case, and agreement monitoring/repair as the positive linguistic candidate.
+- Posted the preprint to PhilArchive: https://philarchive.org/rec/REYNES.
+
+### 2026-06-02
+
+- Resumed shutdown after the PhilArchive posting and completed publication tracking.
+- Added the public preprint PDF and text extract to the central literature folder.
+- Added the central bibliography key `reynolds2026notEveryStableCluster` for the PhilArchive record.
+- Updated portfolio, website publications, and CV tracking; website commit `bd5bc90` was pushed.
+- Next project action remains the anonymized Journal for General Philosophy of Science submission package.
