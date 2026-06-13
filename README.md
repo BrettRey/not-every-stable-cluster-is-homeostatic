@@ -2,13 +2,13 @@
 
 Working repository for Brett Reynolds's short philosophy-of-science paper:
 
-> Not every stable cluster is homeostatic: Stability, network order, and control in projectible kinds
+> Not every stable cluster is homeostatic: Stability, network order, maintenance, and control in projectible kinds
 
 ## Project
 
-The paper uses Naftali Weinberger's 2026 account of homeostasis as causal control to sharpen how Boydian homeostatic property cluster theory should separate stability, network order, and corrective control.
+The paper uses Naftali Weinberger's 2026 account of homeostasis as causal control to sharpen how Boydian homeostatic property cluster theory should separate stability, network order, maintenance, and corrective control.
 
-Working thesis: projectibility is the epistemic target; stable co-occurrence, network order, and corrective control are different ways to secure it; strict homeostasis should be reserved for feedback-sensitive control under perturbation.
+Working thesis: projectibility is the epistemic target; stable profiles, network order, maintenance, and corrective control are different evidential achievements; strict homeostasis should be reserved for feedback-sensitive control under perturbation.
 
 ## Build
 

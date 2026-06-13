@@ -11,5 +11,9 @@
 *.fls
 *.synctex.gz
 
+# Local submission artifacts
+notes/jgps-*.html
+not-every-stable-cluster-is-homeostatic-jgps-*.pdf
+
 # macOS
 .DS_Store

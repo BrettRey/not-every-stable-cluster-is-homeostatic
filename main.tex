@@ -1,19 +1,40 @@
+%!TEX TS-program = xelatex
 \documentclass[12pt]{article}
 
 % House style preamble
 \input{.house-style/preamble.tex}
 \usepackage{float}
 
+\newif\ifsubmissionanonymous
+\ifdefined\submissionanonymousflag
+  \submissionanonymoustrue
+\else
+  \submissionanonymousfalse
+\fi
+
 % Update PDF metadata
+\ifsubmissionanonymous
 \hypersetup{
-  pdftitle={Not every stable cluster is homeostatic: Stability, network order, maintenance, and control in projectible kinds}
+  pdftitle={Not every stable cluster is homeostatic: Stability, network order, maintenance, and control in projectible kinds},
+  pdfauthor={}
 }
+\else
+\hypersetup{
+  pdftitle={Not every stable cluster is homeostatic: Stability, network order, maintenance, and control in projectible kinds},
+  pdfauthor={Brett Reynolds}
+}
+\fi
 
 \title{Not every stable cluster is homeostatic:\\ Stability, network order, maintenance, and control in projectible kinds}
+\ifsubmissionanonymous
+\author{}
+\date{}
+\else
 \author{Brett Reynolds \orcidlink{0000-0003-0073-7195}%
 \thanks{Contact: \href{mailto:brett.reynolds@humber.ca}{brett.reynolds@humber.ca}}\\
 Humber Polytechnic \& University of Toronto}
 \date{\today}
+\fi
 
 \begin{document}
 \maketitle
@@ -905,6 +926,10 @@ produces it.
 
 \section*{Data and code availability}
 
+\ifsubmissionanonymous
+Links to the companion analysis and source repository are omitted for anonymous
+review and will be restored after peer review.
+\else
 The \href{https://brettrey.github.io/not-every-stable-cluster-is-homeostatic/}{companion
 SPACER analysis} is available online, and the source code is available in the
 \href{https://github.com/BrettRey/not-every-stable-cluster-is-homeostatic/tree/main/analysis/spacer-diagnostic}{project
@@ -917,6 +942,7 @@ are not redistributed here.
 Drafting and revision benefited from OpenAI Codex (GPT-5), GPT-5.5 Pro, and Claude
 Opus 4.8. All content has been reviewed and revised by the author, who takes full
 responsibility for the final text.
+\fi
 
 \clearpage
 

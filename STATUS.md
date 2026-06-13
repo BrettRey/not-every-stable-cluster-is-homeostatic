@@ -2,15 +2,15 @@
 
 ## Project
 
-Not every stable cluster is homeostatic: Stability, network order, and control in projectible kinds.
+Not every stable cluster is homeostatic: Stability, network order, maintenance, and control in projectible kinds.
 
 ## Stage
 
-Seed project scaffolded on 2026-05-28. Public GitHub repo created as infrastructure for a short philosophy-of-science article. Current draft is diagnostic-ladder-first and buildable. Preprint posted at PhilArchive on 2026-06-01: https://philarchive.org/rec/REYNES. A companion SPACER diagnostic supplement is live at https://brettrey.github.io/not-every-stable-cluster-is-homeostatic/ and frozen as GitHub release `spacer-supplement-2026-06-03`. Primary target locked: Journal for General Philosophy of Science.
+Seed project scaffolded on 2026-05-28. Public GitHub repo created as infrastructure for a short philosophy-of-science article. Preprint posted at PhilArchive on 2026-06-01: https://philarchive.org/rec/REYNES. A companion SPACER diagnostic supplement is live at https://brettrey.github.io/not-every-stable-cluster-is-homeostatic/ and frozen as GitHub release `spacer-supplement-2026-06-03`. Submitted to the Journal for General Philosophy of Science on 2026-06-13 as `JGPS-D-26-00202`.
 
 ## Working Thesis
 
-Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats projectibility as the target and orders the analysis through a five-step diagnostic ladder:
+Boydian HPC theory needs a sharper homeostasis constraint. The paper treats projectibility as the target and separates five evidential demands in a diagnostic grid:
 
 1. projection target;
 2. stable profile;
@@ -20,15 +20,9 @@ Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats 
 
 ## Immediate Next Actions
 
-- Develop the paper as a compact JGPS research article, targeting 5,500--7,000 words.
-- Prepare the JGPS submission package from the PhilArchive version: anonymized manuscript, separate title page, and declarations.
-- Tighten the Boyd/Khalidi exegetical contrast without turning the paper into a survey.
-- Add a moderate amount of scaffolding for JGPS readers: Weinberger's control account, glycemic regulation, interjections, and why cross-domain cases are legitimate.
-- If expanding the grammaticality/agreement positive linguistic case, consult `../Grammaticality_de_idealized/subprojects/operator-stratum/`: the candidate controlled relation is operator-value coherence and repair, not "grammar" in general.
-- If preparing blind review, create an anonymized manuscript without author block, ORCID, contact footnote, acknowledgements, or LLM declaration in the main file.
-- For blind review, also anonymize or temporarily remove the public data/code availability links because they point to the BrettRey repository and GitHub Pages site.
-- Create a separate title-page/declarations file before submission.
-- Run the saved reviewer board in `advisory-board.md`: Khalidi, Onishi, Weinberger, and Ereshefsky.
+- Wait for the Editorial Manager acknowledgement/status update for `JGPS-D-26-00202`.
+- If JGPS requests source files, use `main.tex` with the XeLaTeX magic comment and ensure all supporting files are uploaded at the same folder level as required by the portal.
+- If the manuscript moves to revision, start from the submitted source state and restore identifying acknowledgements/data links only if the journal no longer requires anonymity.
 
 ## Source Anchors
 
@@ -83,3 +77,10 @@ Boydian HPC theory needs a sharper homeostasis constraint. The paper now treats 
 - Shipped source commit `3de4e38` to `main`, published the rendered site on `gh-pages` commit `4b785a2`, and created GitHub release `spacer-supplement-2026-06-03`.
 - Verification: Quarto render succeeded, `make` reports the PDF up to date, manuscript logs have no unresolved citation/reference warnings, GitHub Pages status is `built`, and the live supplement returns HTTP 200.
 - Local caveat: `notes/spacer-revision-plan.md` remains untracked because it is a Roughdraft checkpoint containing review comments.
+
+### 2026-06-13
+
+- Submitted the manuscript to the Journal for General Philosophy of Science through Editorial Manager.
+- Manuscript ID: `JGPS-D-26-00202`.
+- Submitted title: "Not every stable cluster is homeostatic: Stability, network order, maintenance, and control in projectible kinds."
+- Package used an anonymous manuscript PDF plus separate title page. The submission office comment disclosed AI-tool use and pointed to the title-page disclosure.
